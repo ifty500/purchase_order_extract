@@ -1,0 +1,46 @@
+{% extends 'base.html' %} 
+{% block content %} 
+{% block content_header %}
+<h2>Purchase Order</h2>
+<p>
+    <a href="{% url 'upload_po' %}" class="btn btn-primary">Upload PO</a>
+</p>
+{% endblock %}
+
+<table class="table mb-0">
+    <thead>
+        <tr>
+            <th>order</th>
+            <th>style</th>
+            <th>quantity</th>
+            <th>country</th>
+            <!-- <th>date</th> -->
+            <th>Download</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for po in pos %}
+        <tr>
+
+            <td>{{ po.order }}</td>
+            <td>{{ po.style }}</td>
+            <td>{{ po.quantity }}</td>
+            <td>{{ po.country }}</td>
+            <!-- <td>{{ po.date|date:'%d-%m-%Y' }}</td> -->
+            <td>
+                <a href="{{ po.pdf.url }}" class="btn btn-primary btn-sm" target="_blank">
+              Download PDF
+            </a>
+            </td>
+            <td>
+                <form method="post" action="{% url 'delete_po' po.pk %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

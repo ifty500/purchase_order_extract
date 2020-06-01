@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h2>Upload Size</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-primary">Upload size</button>
+    <!-- <label for="poSelect">Choose PO</label>
+    <select type="text" id="poSelect" name="poSelect">
+      <option selected>BestSeller</option>
+      <option>TomyHill</option>
+      <option>TomTailor</option>
+       <option>ORANGE</option>
+      <option>BLACK</option> 
+    </select> -->
+</form>
+{% endblock %}
