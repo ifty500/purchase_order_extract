@@ -14,7 +14,17 @@
             <th>style</th>
             <th>quantity</th>
             <th>country</th>
-            <!-- <th>date</th> -->
+
+            <th>XXS</th>
+            <th>XS</th>
+            <th>S</th>
+            <th>M</th>
+            <th>L</th>
+            <th>XL</th>
+            <th>XXL</th>
+            <th>XXXL</th>
+            <th>Total</th>
+
             <th>Download</th>
             <th>Delete</th>
         </tr>
@@ -27,6 +37,16 @@
             <td>{{ po.style }}</td>
             <td>{{ po.quantity }}</td>
             <td>{{ po.country }}</td>
+
+            <td>{{ po.XXS }}</td>
+            <td>{{ po.XS }}</td>
+            <td>{{ po.S }}</td>
+            <td>{{ po.M }}</td>
+            <td>{{ po.L }}</td>
+            <td>{{ po.XL }}</td>
+            <td>{{ po.XXL }}</td>
+            <td>{{ po.XXXL }}</td>
+            <td>{{ po.total }}</td>
             <!-- <td>{{ po.date|date:'%d-%m-%Y' }}</td> -->
             <td>
                 <a href="{{ po.pdf.url }}" class="btn btn-primary btn-sm" target="_blank">

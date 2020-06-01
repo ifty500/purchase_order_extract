@@ -75,6 +75,24 @@ def upload_po(request):
                 style_No=get_info_from_text(text,regex_style_no)
                 order_No=get_info_from_text(text,regex_order_no)
                 country_name = get_info_from_text(text,regex_country)
+                
+                data = tables_extract(path) #need to get the full path with extension to itterate the loop
+            
+                print(data)
+                with open(data) as f:
+                    reader = csv.reader(f)
+                    for row in reader:
+                        print(row)
+                        get_file.XXS = row[2]
+                        get_file.XS = row[3]
+                        get_file.S = row[4]
+                        get_file.M = row[5]
+                        get_file.L = row[6]
+                        get_file.XL = row[7]
+                        get_file.XXL = row[8]
+                        get_file.XXXL = row[9]
+                        get_file.total = row[10]
+                    get_file.save()
 
                 
 
@@ -125,22 +143,7 @@ def upload_po(request):
             
             
             #print(object(get_file))
-            data = tables_extract(path) #need to get the full path with extension to itterate the loop
             
-            print(data)
-            with open(data) as f:
-                reader = csv.reader(f)
-                for row in reader:
-                    get_file.XXS = row[1]
-                    get_file.XS = row[2]
-                    get_file.S = row[3]
-                    get_file.M = row[4]
-                    get_file.L = row[5]
-                    get_file.XL = row[6]
-                    get_file.XXL = row[7]
-                    get_file.XXXL = row[8]
-                    get_file.total = row[9]
-                get_file.save()
 
             get_file.order = order_No
             get_file.style = style_No
@@ -264,7 +267,7 @@ def tables_extract(file_name):
     print("hahah")
 
     tables = camelot.read_pdf(file_name, pages="1-end")
-    table= tables[1].df
+    table= tables[2].df
     file = table.to_csv("{}{}.csv".format('F:/naimProject/po_upload/media/pos/csv/',basename_without_ex))
     print(file)
     filename_with_path = 'F:/naimProject/po_upload/media/pos/csv/{}'.format(

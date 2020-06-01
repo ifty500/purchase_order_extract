@@ -85,8 +85,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'po_db',
-        'USER': '',
-        'PASSWORD': '',
+        'USER': 'naim500',
+        'PASSWORD': 'naim500',
         'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {
